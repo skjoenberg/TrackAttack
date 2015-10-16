@@ -8,6 +8,11 @@ class GameHandler:
         self.line   = -1
         self._first_game = True
 
+    # Checks whether a game has begun
+    def _new_game(self):
+        return (self.reader.game_beginning() != self.begin)
+
+    # Creates a new game objects
     def _create_new_game(self):
         self.game  = Game()
         self.begin = self.reader.game_beginning()
@@ -15,9 +20,7 @@ class GameHandler:
         self.turn   = 1
         self._first_game = False
 
-    def _new_game(self):
-        return (self.reader.game_beginning() != self.begin)
-
+    # Handles each new line in the log
     def _handle_news(self, line):
         if (self.reader.played_self(line) != None):
             cur_play = self.reader.played_self(line)
@@ -28,6 +31,7 @@ class GameHandler:
         elif (self.reader.next_turn(line)):
             self.turn += 1
 
+    # Updates game information
     def update(self):
         if (self._new_game()):
             if (not self._first_game):
@@ -39,6 +43,7 @@ class GameHandler:
                 self._handle_news(line)
                 self.line += 1
 
+    # Returns all the cards played (used for UI)
     def info(self):
         if (self.line != -1):
             return self.game.cards_played()

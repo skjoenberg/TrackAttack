@@ -7,12 +7,14 @@ class Game:
         self.turns_self = []
         self.turns_oppo = []
 
+    # Creates a new turn for the current player
     def _new_turn(self, player):
             if (player == 1):
                 self.turns_self.append(Turn())
             else:
                 self.turns_oppo.append(Turn())
 
+    # Plays a card for a current player on a given turn
     def play(self, player, card, turn):
         if (turn > self.turn):
             self.turn = turn
@@ -23,6 +25,8 @@ class Game:
             else:
                 self.turns_oppo[-1].add_card(card)
 
+    # Returns all cards played during the game.
+    # Returns a tuple (your cards, opponents cards)
     def cards_played(self):
         cards_self = []
         cards_oppo = []
@@ -36,7 +40,7 @@ class Game:
 
         return (cards_self, cards_oppo)
 
-
+    # Exports the game in turns to a log file
     def export(self):
         f = open('lol', 'w')
         yolo = ""

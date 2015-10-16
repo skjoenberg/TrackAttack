@@ -20,6 +20,7 @@ class Log:
         print
         return (self.last_modification != os.stat(self.path)[-2])
 
+    # Returns the length of the log-file
     def length(self):
         return len(self.data)
 
