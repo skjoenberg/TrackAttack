@@ -1,4 +1,5 @@
 from Turn import Turn
+from time import gmtime, strftime
 
 class Game:
     def __init__(self):
@@ -42,16 +43,21 @@ class Game:
 
     # Exports the game in turns to a log file
     def export(self):
-        f = open('lol', 'w')
+        time = strftime("%d-%m-%Y-%H:%M:%S", gmtime())
+        path = "log/" + "hearthstone" + time + ".txt"
         yolo = ""
         turn_num = 1
+        f = open(path, "w")
         for turn in self.turns_self:
             yolo += "You played [turn " + str(turn_num) + "]:\n"
             for card in turn.cards_played():
                 yolo += str(card) + "\n"
+            turn_num += 1
+        turn_num = 1
         for turn in self.turns_oppo:
             yolo += "Your opponent played [turn " + str(turn_num) + "]:\n"
             for card in turn.cards_played():
                 yolo += str(card) + "\n"
+            turn_num += 1
         f.write(yolo)
         f.close
