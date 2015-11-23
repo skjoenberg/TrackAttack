@@ -3,6 +3,7 @@ from LogReader import LogReader
 
 class GameHandler:
     def __init__(self, log):
+        self.game  = Game()
         self.reader = LogReader(log)
         self.begin  = -1
         self.line   = -1
