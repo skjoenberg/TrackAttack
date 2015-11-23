@@ -57,7 +57,7 @@ class UI:
                 input_command = input('Enter command: ')
                 self._clear_output()
 
-                self.game.update()
+                self.handler.update()
                 if input_command.startswith("search"):
                     search = input_command[7:]
                     print("You played: ")
