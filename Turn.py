@@ -1,5 +1,6 @@
 class Turn:
-    def __init__(self):
+    def __init__(self, num):
+        self.num = num
         self.cards = []
 
     # Adds card to turn
