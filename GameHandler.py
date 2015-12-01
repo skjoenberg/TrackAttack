@@ -18,7 +18,7 @@ class GameHandler:
         self.game  = Game()
         self.begin = self.reader.game_beginning()
         self.line  = self.reader.game_beginning()
-        self.turn   = 1
+        self.turn  = 1
         self._first_game = False
 
     # Handles each new line in the log
